@@ -150,6 +150,11 @@ function handle_button_press(char_id) {
             calcul += char_id + "(";
             opened_parenthesis += ")";
             current_token_type = "p-open";
+        } else if (char_id == "-") {
+            calcul += current_token + "(-";
+            current_token = "";
+            current_token_type = "p-open";
+            opened_parenthesis += ")";
         } else if (char_id == "p-open") {
             // A parenthesis is added.
             calcul += current_token + "(";
