@@ -152,7 +152,7 @@ function handle_button_press(char_id) {
             current_token_type = "p-open";
         } else if (char_id == "p-open") {
             // A parenthesis is added.
-            calcul += current_token;
+            calcul += current_token + "(";
             current_token == "";
             current_token_type = "p-open";
             opened_parenthesis += ")";
