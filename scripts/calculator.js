@@ -7,12 +7,14 @@ const OPERATORS = ["+", "-", "*", "/", "^"];
 const UNARY_OPERATORS = ["!", "^2", "^3"]
 const PARENTHESIS = ["(", ")"]
 const NEW_VALUE = NUMBERS + FUNCTIONS + CONSTANTS;
+
 const calcul_display = document.getElementById("calcul-display");
 const calcul_display_base = document.getElementById("calcul-display-base");
 const calcul_display_current = document.getElementById("calcul-display-current");
 const calcul_display_autocomplete = document.getElementById("calcul-display-autocomplete");
 const calcul_output = document.getElementById("calcul-output");
 const variable_x = document.getElementById("x-value");
+const history = document.getElementById("history");
 
 const parser = new Parser();
 
@@ -22,13 +24,31 @@ var current_token = ""
 var current_token_type = ""
 var opened_parenthesis = ""
 
-function calculate() {
+function calculate(save_to_history = false) {
     let x = parseFloat(variable_x.value);
     console.log(x);
     console.log("calcul = ", calcul + current_token + opened_parenthesis)
     try {
         result = Parser.evaluate(calcul + current_token + opened_parenthesis, { pi: Math.PI, e: Math.E, x: x });
         console.log("result = ", result);
+        if (save_to_history) {
+            let history_item = document.createElement("p");
+            history_item.innerText = calcul + current_token + opened_parenthesis + " = " + result;
+            history_item.classList.add("history-item");
+            history_item.dataset.calculus = calcul + current_token + opened_parenthesis;
+            history.appendChild(history_item);
+            history_item.addEventListener("click", (e) => {
+                calcul = history_item.dataset.calculus;
+                current_token = "";
+                current_token_type = "";
+                opened_parenthesis = "";
+                calcul_display_base.innerText = calcul;
+                calcul_display_current.innerText = current_token;
+                calcul_display_autocomplete.innerText = opened_parenthesis;
+                calculate(false);
+                calcul_output.innerText = result;
+            })
+        }
         return true
     } catch ({ name, message }) {
         console.log(name, message)
@@ -41,7 +61,7 @@ function handle_button_press(char_id) {
     /* This function is called when a button of the calculator is clicked.
     It checks if the action is possible and adds it to the calcul. */
     if (char_id == "eq") {
-        return calculate();
+        return calculate(true);
     }
     if (char_id == "clear") {
         calcul = "";
@@ -242,7 +262,7 @@ function setup_calculator() {
 
     variable_x.addEventListener("input", (e) => {
         console.log("____________________")
-        if (calculate()) {
+        if (calculate(false)) {
             calcul_output.innerText = result;
         }
     })
