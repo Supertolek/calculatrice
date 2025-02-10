@@ -1,0 +1,101 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* Calculator positionning */
+#page-container {
+    /* Position */
+    width: 100%;
+    height: 100%;
+}
+
+.vertical-center {
+    /* Position */
+    width: 100%;
+    height: 100%;
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.horizontal-center {
+    /* Position */
+    width: 100%;
+    /* Flexbox */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Calculator containers */
+#calculator-container {
+    /* Display */
+    background-color: #F7F7F7;
+    border-radius: 25px;
+}
+
+#calculator-table {
+    /* Position */
+    padding: 10px;
+    border-spacing: 7px;
+
+    /* Display */
+    background-color: #EEEEEE;
+    border-radius: 25px;
+}
+
+/* Calculator output */
+#calcul-output {
+    /* Position */
+    height: 20px;
+    margin: 17px;
+    padding: 7px;
+
+    /* Display */
+    background-color: #FFFFFF;
+    border-radius: 20px;
+
+    /* Text */
+    font-size: 1em;
+    text-align: end;
+    font-weight: 600;
+    color: gray;
+}
+
+/* Calculator styling */
+.calculator-button {
+    /* Position */
+    width: 30px;
+    height: 20px;
+    padding: 7px;
+
+    /* Display */
+    background-color: lightgrey;
+    border-radius: 20px;
+
+    /* Text */
+    text-align: center;
+    font-weight: 600;
+    user-select: none;
+    cursor: pointer;
+}
+
+.calculator-operation {
+    background-color: aqua;
+}
+
+.calculator-equal {
+    background-color: aquamarine;
+}
+
+.calculator-clear {
+    background-color: red;
+}

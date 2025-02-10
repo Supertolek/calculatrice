@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+        <title>Calculatrice</title>
+    </head>
+    <body>
+        <div id="page-container">
+            <div class="vertical-center">
+                <div class="horizontal-center">
+                    <div id="calculator-container">
+                        <p id="calcul-output"></p>
+                        <table id="calculator-table">
+                            <tr>
+                                <td class="calculator-button" id="rad">rad</td>
+                                <td class="calculator-button" id="deg">deg</td>
+                                <td class="calculator-button" id="paro">(</td>
+                                <td class="calculator-button" id="parc">)</td>
+                                <td class="calculator-button" id="supr">←</td>
+                                <td class="calculator-button calculator-clear" id="clear" colspan="2">C</td>
+                            </tr>
+                            <tr>
+                                <td class="calculator-button calculator-operation" id="sin">sin</td>
+                                <td class="calculator-button calculator-operation" id="cos">cos</td>
+                                <td class="calculator-button calculator-operation" id="tan">tan</td>
+                                <td class="calculator-button" id="1">1</td>
+                                <td class="calculator-button" id="2">2</td>
+                                <td class="calculator-button" id="3">3</td>
+                                <td class="calculator-button calculator-operation" id="add">+</td>
+                            </tr>
+                            <tr>
+                                <td class="calculator-button calculator-operation" id="pwr2">x<sup>2</sup></td>
+                                <td class="calculator-button calculator-operation" id="pwr3">x<sup>3</sup></td>
+                                <td class="calculator-button calculator-operation" id="pow">x<sup>y</sup></td>
+                                <td class="calculator-button" id="4">4</td>
+                                <td class="calculator-button" id="5">5</td>
+                                <td class="calculator-button" id="6">6</td>
+                                <td class="calculator-button calculator-operation" id="sub">-</td>
+                            </tr>
+                            <tr>
+                                <td class="calculator-button calculator-operation" id="fact">!</td>
+                                <td class="calculator-button calculator-operation" id="log">log</td>
+                                <td class="calculator-button calculator-operation" id="ln">ln</td>
+                                <td class="calculator-button" id="7">7</td>
+                                <td class="calculator-button" id="8">8</td>
+                                <td class="calculator-button" id="9">9</td>
+                                <td class="calculator-button calculator-operation" id="mult">×</td>
+                            </tr>
+                            <tr>
+                                <td class="calculator-button calculator-operation" id="pi">π</td>
+                                <td class="calculator-button calculator-operation" id="e">e</td>
+                                <td class="calculator-button" id=""></td>
+                                <td class="calculator-button" id="0">0</td>
+                                <td class="calculator-button calculator-equal" id="eq" colspan="2">=</td>
+                                <td class="calculator-button calculator-operation" id="div">÷</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="module" src="./scripts/index.js"></script>
+</html>
