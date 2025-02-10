@@ -1,11 +1,26 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --color-red: #e91f1c;
+    --color-light-blue: #01BAEF;
+    --color-white: #FBFBFF;
+    --color-black: #040F16;
+
+    --color-text-selected: #00ccff;
+    --color-worthless: #acacac;
+
+    --ghost-white-1: #FBFBFF;
+    --ghost-white-2: #EEEEF4;
+    --ghost-white-3: #E2E2EA;
+    --ghost-white-4: #D5D5DF;
 }
 
 body {
+    /* Position */
     margin: 0px;
     width: 100vw;
     height: 100vh;
+    /* Display */
+    background-color: var(--ghost-white-1);
 }
 
 
@@ -38,7 +53,7 @@ body {
 /* Calculator containers */
 #calculator-container {
     /* Display */
-    background-color: #F7F7F7;
+    background-color: var(--ghost-white-2);
     border-radius: 25px;
 }
 
@@ -48,26 +63,58 @@ body {
     border-spacing: 7px;
 
     /* Display */
-    background-color: #EEEEEE;
+    background-color: var(--ghost-white-3);
     border-radius: 25px;
 }
 
 /* Calculator output */
-#calcul-output {
+#calcul-display {
     /* Position */
-    height: 20px;
+    height: 60px;
     margin: 17px;
     padding: 7px;
 
     /* Display */
-    background-color: #FFFFFF;
+    background-color: var(--ghost-white-1);
     border-radius: 20px;
 
     /* Text */
     font-size: 1em;
     text-align: end;
     font-weight: 600;
-    color: gray;
+}
+
+#calcul-display-base {
+    display: inline-block;
+    color: var(--color-black);
+}
+
+#calcul-display-current {
+    /* Position */
+    padding-left: 4px;
+    padding-right: 4px;
+    /* Display */
+    display: inline-block;
+    /* Text */
+    color: var(--color-text-selected);
+    font-weight: 800;
+}
+#calcul-display-current:not(:empty) {
+    /* Display */
+    background-color: var(--ghost-white-2);
+    border: 1px solid var(--color-worthless);
+    border-radius: 5px;
+}
+
+#calcul-display-autocomplete {
+    display: inline-block;
+    /* Text */
+    color: var(--color-worthless);
+}
+
+#calcul-output {
+    display: inline-block;
+    color: #373737;
 }
 
 /* Calculator styling */
@@ -78,7 +125,7 @@ body {
     padding: 7px;
 
     /* Display */
-    background-color: lightgrey;
+    background-color: #c5c5d1;
     border-radius: 20px;
 
     /* Text */
@@ -89,13 +136,26 @@ body {
 }
 
 .calculator-operation {
-    background-color: aqua;
+    background-color: var(--color-light-blue);
 }
 
 .calculator-equal {
-    background-color: aquamarine;
+    background-color: var(--color-red);
 }
 
 .calculator-clear {
-    background-color: red;
+    background-color: var(--color-red);
+}
+
+.x-value-container {
+    /* Position */
+    white-space: nowrap;
+}
+
+#x-value {
+    /* Display */
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-black);
+    border-radius: 13px;
 }
