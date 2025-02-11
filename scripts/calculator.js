@@ -1,7 +1,7 @@
 import { Parser } from "../modules/expr-eval-master/index.js";
 
 const NUMBERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
-const FUNCTIONS = ["sin", "asin", "cos", "acos", "tan", "atan", "log", "ln", "fact"];
+const FUNCTIONS = ["sin", "asin", "cos", "acos", "tan", "atan", "log10", "ln", "fact"];
 const CONSTANTS = ["pi", "e", "x"];
 const OPERATORS = ["+", "-", "*", "/", "^"];
 const UNARY_OPERATORS = ["!", "^2", "^3"]
@@ -74,14 +74,14 @@ function handle_button_press(char_id) {
         console.log("Backspace pressed")
         if (current_token) {
             console.log("ct")
-            current_token = current_token.substring(0, current_token.length-1);
+            current_token = current_token.substring(0, current_token.length - 1);
         } else {
-            if (calcul[calcul.length-1] == "(") {
-                opened_parenthesis = opened_parenthesis.substring(0, opened_parenthesis.length-1);
-            } else if (calcul[calcul.length-1] == ")") {
+            if (calcul[calcul.length - 1] == "(") {
+                opened_parenthesis = opened_parenthesis.substring(0, opened_parenthesis.length - 1);
+            } else if (calcul[calcul.length - 1] == ")") {
                 opened_parenthesis += ")";
             }
-            calcul = calcul.substring(0, calcul.length-1);
+            calcul = calcul.substring(0, calcul.length - 1);
         }
         return true;
     }
@@ -283,24 +283,29 @@ function setup_calculator() {
     })
 
     window.onkeyup = function (e) {
-        if (!(e.ctrlKey || e.metaKey)) {
-            let key_pressed = e.key;
-            key_pressed = key_pressed == "," ? "." : key_pressed;
-            key_pressed = key_pressed == "Enter" ? "eq" : key_pressed;
-            console.log(key_pressed)
-            if (NUMBERS + OPERATORS + CONSTANTS.includes(key_pressed)) {
-                console.log("____________________")
-                console.log("this.id = ", key_pressed);
-                console.log("current_token = ", current_token)
-                console.log("calcul = ", calcul);
-                handle_button_press(key_pressed);
-                calcul_display_base.innerText = calcul;
-                calcul_display_current.innerText = current_token;
-                calcul_display_autocomplete.innerText = opened_parenthesis;
-                calcul_output.innerText = result;
+        console.log(e.target.tagName)
+        if (e.target.tagName != "INPUT") {
+            if (!(e.ctrlKey || e.metaKey)) {
+                let key_pressed = e.key;
+                key_pressed = key_pressed == "," ? "." : key_pressed;
+                key_pressed = key_pressed == "Enter" ? "eq" : key_pressed;
+                console.log(key_pressed)
+                if (NUMBERS + OPERATORS + CONSTANTS.includes(key_pressed)) {
+                    console.log("____________________")
+                    console.log("this.id = ", key_pressed);
+                    console.log("current_token = ", current_token)
+                    console.log("calcul = ", calcul);
+                    handle_button_press(key_pressed);
+                    calcul_display_base.innerText = calcul;
+                    calcul_display_current.innerText = current_token;
+                    calcul_display_autocomplete.innerText = opened_parenthesis;
+                    calcul_output.innerText = result;
+                }
             }
         }
     }
 }
 
 setup_calculator();
+
+export { setup_calculator, handle_button_press, calculate, calcul, result };

@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <!-- <link rel="stylesheet" type="text/css" media="not print" href="styles/style.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/path/to/print.css" />
     <title>Calculatrice</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8820481077243773"
         crossorigin="anonymous"></script>
 </head>
@@ -13,6 +15,14 @@
     <div id="page-container">
         <div class="vertical-center">
             <div class="horizontal-center">
+                <div id="graph-container">
+                    <canvas id="my-graph" style="width:100%;max-width:700px"></canvas>
+                    <ul>
+                        <li>min = <input id="min-value"></li>
+                        <li>max = <input id="max-value"></li>
+                        <li>step = <input id="step-value"></li>
+                    </ul>
+                </div>
                 <div id="calculator-container">
                     <p id="calcul-display"><!--
                         --><span id="calcul-display-base"></span><!--
@@ -51,7 +61,7 @@
                         </tr>
                         <tr>
                             <td class="calculator-button calculator-operation" id="!">!</td>
-                            <td class="calculator-button calculator-operation" id="log">log</td>
+                            <td class="calculator-button calculator-operation" id="log10">log</td>
                             <td class="calculator-button calculator-operation" id="ln">ln</td>
                             <td class="calculator-button" id="7">7</td>
                             <td class="calculator-button" id="8">8</td>
@@ -79,5 +89,6 @@
     </div>
 </body>
 <script type="module" src="./scripts/calculator.js"></script>
+<script type="module" src="./scripts/grapher.js"></script>
 
 </html>
