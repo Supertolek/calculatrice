@@ -35,7 +35,7 @@ my_graph.addEventListener("click", (e) => {
     // Get values
     let x_values = [];
     let y_values = [];
-    for (let index = min_value; index < max_value; index += step_value) {
+    for (let index = min_value; index <= max_value; index += step_value) {
         variable_x.value = index;
         calculate(false)
         x_values.push(index.toPrecision(3));

@@ -2,7 +2,7 @@ import { Parser } from "../modules/expr-eval-master/index.js";
 
 const NUMBERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 const FUNCTIONS = ["sin", "asin", "cos", "acos", "tan", "atan", "log10", "ln", "fact"];
-const CONSTANTS = ["pi", "e", "x"];
+const CONSTANTS = ["pi", "e", "x", "a", "b", "i"];
 const OPERATORS = ["+", "-", "*", "/", "^"];
 const UNARY_OPERATORS = ["!", "^2", "^3"]
 const PARENTHESIS = ["(", ")"]
@@ -14,6 +14,8 @@ const calcul_display_current = document.getElementById("calcul-display-current")
 const calcul_display_autocomplete = document.getElementById("calcul-display-autocomplete");
 const calcul_output = document.getElementById("calcul-output");
 const variable_x = document.getElementById("x-value");
+const variable_a = document.getElementById("a-value");
+const variable_b = document.getElementById("b-value");
 const history = document.getElementById("history");
 
 const parser = new Parser();
@@ -26,10 +28,12 @@ var opened_parenthesis = ""
 
 function calculate(save_to_history = false) {
     let x = parseFloat(variable_x.value);
-    console.log(x);
+    let a = parseFloat(variable_a.value);
+    let b = parseFloat(variable_b.value);
+    console.log(x, a, b);
     console.log("calcul = ", calcul + current_token + opened_parenthesis)
     try {
-        result = Parser.evaluate(calcul + current_token + opened_parenthesis, { pi: Math.PI, e: Math.E, x: x });
+        result = Parser.evaluate(calcul + current_token + opened_parenthesis, { pi: Math.PI, e: Math.E, x: x, a: a, b: b });
         console.log("result = ", result);
         if (save_to_history) {
             let history_item = document.createElement("p");
@@ -280,15 +284,31 @@ function setup_calculator() {
         if (calculate(false)) {
             calcul_output.innerText = result;
         }
+    });
+    variable_a.addEventListener("input", (e) => {
+        console.log("____________________")
+        if (calculate(false)) {
+            calcul_output.innerText = result;
+        }
+    });
+    variable_b.addEventListener("input", (e) => {
+        console.log("____________________")
+        if (calculate(false)) {
+            calcul_output.innerText = result;
+        }
     })
 
     window.onkeyup = function (e) {
         console.log(e.target.tagName)
         if (e.target.tagName != "INPUT") {
             if (!(e.ctrlKey || e.metaKey)) {
+                // 653*sin((x*x*x*a/(983*x*tan(81/360*2*pi)/1)/1)^.5)
                 let key_pressed = e.key;
                 key_pressed = key_pressed == "," ? "." : key_pressed;
                 key_pressed = key_pressed == "Enter" ? "eq" : key_pressed;
+                key_pressed = key_pressed == "c" ? "clear" : key_pressed;
+                key_pressed = key_pressed == "(" ? "p-open" : key_pressed;
+                key_pressed = key_pressed == ")" ? "p-close" : key_pressed;
                 console.log(key_pressed)
                 if (NUMBERS + OPERATORS + CONSTANTS.includes(key_pressed)) {
                     console.log("____________________")

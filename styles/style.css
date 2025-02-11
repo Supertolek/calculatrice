@@ -152,7 +152,7 @@ body {
     white-space: nowrap;
 }
 
-#x-value {
+.value-selector {
     /* Display */
     background-color: transparent;
     border: none;
